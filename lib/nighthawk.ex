@@ -1,18 +1,5 @@
 defmodule Nighthawk do
-  @moduledoc """
-  Documentation for `Nighthawk`.
-  """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Nighthawk.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def start_link(type, args) do
+    Nighthawk.Application.start(type, args)
   end
 end
