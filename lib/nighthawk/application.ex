@@ -7,8 +7,7 @@ defmodule Nighthawk.Application do
 
   def start(_type, _args) do
     children = [
-      # Starts a worker by calling: Nighthawk.Worker.start_link(arg)
-      # {Nighthawk.Worker, arg}
+      Nighthawk.NighthawkServer
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
