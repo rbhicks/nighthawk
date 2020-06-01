@@ -121,7 +121,7 @@ defmodule Nighthawk.NighthawkServer do
   end
 
   def init(_args) do
-    run_rules()  
+    run_rules()
     {:ok, {}}
   end
 
@@ -134,15 +134,55 @@ defmodule Nighthawk.NighthawkServer do
   def run_rules do
     defrule bad_source_for_backlink do
       conditions do
-        true == true
-        13 < 17
-        17 > 11
-        false == false
+        backlink() == "http://some-bad-place.com/some-bad-path/some-bad-file.html"
       end
       actions do
-        IO.puts "$%$%$%$%$%$%$%$%$%$%$%$%"
-        IO.puts "@@@@@@@@@@@@@@@@@@@@@@@@"
+        report "found bad link"
+      end
+    end
+
+    defrule not_enough_backlinks do
+      conditions do
+        backlink_count() < 17
+      end
+      actions do
+        report "not enough backlinks"
+      end
+    end
+
+    defrule not_enough_internal_links do
+      conditions do
+        internal_link_count() < 37
+      end
+      actions do
+        report "not enough internal links"
       end
     end
   end
+  
+  #
+  # rule utilities
+  #
+
+  # fake implementation that just returns the bad
+  # backlink source to test the rule
+  def backlink do
+    "http://some-bad-place.com/some-bad-path/some-bad-file.html"
+  end
+
+  def backlink_count do
+    13
+  end
+
+  def internal_link_count do
+    23
+  end
+
+  def report(message) do
+    IO.puts "+++++++++++++++++++++++++++++++++++++++"
+    IO.puts message
+    IO.puts "+++++++++++++++++++++++++++++++++++++++"
+    IO.puts ""
+    IO.puts ""
+  end  
 end
