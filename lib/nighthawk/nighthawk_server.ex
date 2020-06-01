@@ -57,8 +57,8 @@ defmodule Nighthawk.NighthawkServerMacros do
 
   # the first tuple element wasn't :__block__
   # we know we have only one condition
-  def process_conditions({function, _meta, _arguments}) do
-    {function, [context: Elixir, import: Kernel], [true, true]}    
+  def process_conditions({function, _meta, arguments}) do
+    {function, [context: Elixir, import: Kernel], arguments}
   end
 
   # pattern match to handle the case where there are only
