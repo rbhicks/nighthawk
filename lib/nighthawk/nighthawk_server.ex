@@ -1,7 +1,14 @@
 defmodule Nighthawk.NighthawkServerMacros do
   @moduledoc """
-  This is a simple implementation of a DSL for
-  creating declarative rules.
+  This is a simple proof of concept implementation of a DSL for
+  creating declarative rules. In this case, three rules are for
+  a theoretical SEO system are defined.
+
+  Rule systems of this nature would normally require a separate
+  system to provide the information that the rules act on and a
+  mechanism to fix the rules correctly for all the that information.
+  In this example, these parts are simulated. I.E., the helper
+  functions provide single hard coded values.
   """
 
   defmacro __using__(_) do
@@ -121,6 +128,18 @@ defmodule Nighthawk.NighthawkServer do
   end
 
   def init(_args) do
+    IO.puts """
+
+    
+    About to run three example rules for a theoretical
+    SEO system. The rules do the following:
+     - checks for a known bad source for a backlink
+     - checks for meeting a minimum number of backlinks
+     - checks for meeting a minimum number of internal links
+
+    These rules are provided with hardcoded data that will
+    cause each one to fire.
+    """
     run_rules()
     {:ok, {}}
   end
@@ -128,6 +147,16 @@ defmodule Nighthawk.NighthawkServer do
   ##################################################################################
   ##################################################################################
   # this is where we define and run the rules
+  #
+  # as mentioned above, an implementation beyond a proof of concept would require
+  # a separate system to gather the data and provide it to the unility functions.
+  # also, it would have to be provide in such a way that rules could be applied
+  # multiple times where necessary; e.g., the "bad_source_for_backlink" rule would
+  # need to be run against all backlinks while the "not_enough_*" rules only need
+  # to be run once.
+  #
+  # here we're only demonstrating the ability to use macros to create declarative
+  # DSLs.
   ##################################################################################
   ##################################################################################
   
@@ -137,7 +166,7 @@ defmodule Nighthawk.NighthawkServer do
         backlink() == "http://some-bad-place.com/some-bad-path/some-bad-file.html"
       end
       actions do
-        report "found bad link"
+        report "found bad backlink"
       end
     end
 
@@ -170,10 +199,12 @@ defmodule Nighthawk.NighthawkServer do
     "http://some-bad-place.com/some-bad-path/some-bad-file.html"
   end
 
+  # fake implementation that just returns a low backlink count
   def backlink_count do
     13
   end
 
+  # fake implementation that just returns a low internal link count
   def internal_link_count do
     23
   end
