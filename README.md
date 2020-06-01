@@ -1,21 +1,13 @@
 # Nighthawk
 
-**TODO: Add description**
+This is a simple proof of concept implementation of a DSL for creating declarative rules. In this case, three rules are for a theoretical SEO system are defined.
 
-## Installation
+Rule systems of this nature would normally require a separate system to provide the information that the rules act on and a mechanism to fix the rules correctly for all the that information. In this example, these parts are simulated. I.E., the helper functions provide single hard coded values.
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `nighthawk` to your list of dependencies in `mix.exs`:
+To try it out, clone this repo and do the following:
 
-```elixir
-def deps do
-  [
-    {:nighthawk, "~> 0.1.0"}
-  ]
-end
 ```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/nighthawk](https://hexdocs.pm/nighthawk).
+cd nighthawk
+mix run
+```
 
