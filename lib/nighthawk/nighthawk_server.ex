@@ -128,7 +128,7 @@ defmodule Nighthawk.NighthawkServer do
   end
 
   def init(_args) do
-    IO.puts """
+    """
 
     
     About to run three example rules for a theoretical
@@ -139,7 +139,7 @@ defmodule Nighthawk.NighthawkServer do
 
     These rules are provided with hardcoded data that will
     cause each one to fire.
-    """
+    """ |> IO.puts
     run_rules()
     {:ok, {}}
   end
@@ -210,10 +210,10 @@ defmodule Nighthawk.NighthawkServer do
   end
 
   def report(message) do
-    IO.puts "+++++++++++++++++++++++++++++++++++++++"
-    IO.puts message
-    IO.puts "+++++++++++++++++++++++++++++++++++++++"
-    IO.puts ""
-    IO.puts ""
+    "+++++++++++++++++++++++++++++++++++++++" |> IO.puts
+    message |> IO.puts
+    "+++++++++++++++++++++++++++++++++++++++" |> IO.puts
+    "" |> IO.puts
+    "" |> IO.puts
   end  
 end
