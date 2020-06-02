@@ -17,7 +17,7 @@ defmodule Nighthawk.NighthawkServerMacros do
     end
   end
   
-  # primary rule macro. this implements the most
+  # primary rule macro. this implements most
   # of the DSL for defining rules.
   # currently, we aren't using the rule name,
   # but we're passing it in as it will probably
