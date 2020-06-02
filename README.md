@@ -1,6 +1,6 @@
 # Nighthawk
 
-N.B.:
+**N.B.:**
 
 - this project is created as a supervisor application for potential future expansion. As can be seen here, no process is launched and the whole thing exits after running. It’s basically a glorified .exs right now.
 - to keep things easy to see, the macro module and the main module are both in the same file.
