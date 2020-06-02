@@ -17,8 +17,8 @@ defmodule Nighthawk.NighthawkServerMacros do
     end
   end
   
-  # primary rule macro. this implements most
-  # of the DSL for defining rules.
+  # primary rule macro. this contains the
+  # logic of the DSL for defining rules.
   # currently, we aren't using the rule name,
   # but we're passing it in as it will probably
   # be needed later for expanded functionality.
@@ -75,8 +75,8 @@ defmodule Nighthawk.NighthawkServerMacros do
     create_condition_ast_core(first_condition, second_condition)
   end
 
-  # pattern match to handle the first two conditions where
-  # there are more than two conditions. the first two need
+  # pattern match to handle the case where there
+  # are more than two conditions. the first two need
   # to be handled separately since they form the core of
   # the condition ast. we're using pattern matching to do
   # this to avoid having a single function with conditional
